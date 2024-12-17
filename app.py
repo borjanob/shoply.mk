@@ -1,31 +1,38 @@
 from flask import Flask, render_template, request,redirect
 from datetime import datetime
 from flask_mail import Mail, Message
+import os
+#from dotenv import load_dotenv
+
+# TODO: ADD CHOOSE ME BUTTON TO PACKET CARDS
+# TODO: ADD POPLAKI/POFALBI
+# TODO: ADD USER TESTIMONIALS
 
 app = Flask(__name__)
 
-mail = Mail()
-mail.init_app(app)
 
-username = ''
-password = ''
-sender = ''
-reciever = ''
+username = os.environ.get('MAIL_USERNAME')
+password = os.environ.get('MAIL_PASSWORD')
+sender = os.environ.get('MAIL_USERNAME')
+reciever = os.environ.get('MAIL_USERNAME')
 
 
-app.config['MAIL_SERVER'] = 'smtp.mail.yahoo.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = username
 app.config['MAIL_PASSWORD'] = password
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
+mail = Mail()
+mail.init_app(app)
+
 
 def send_email(email: str,name:str = 'Unknown', phone: int = None, message: str = 'No message',
              subject: str = 'Web app idea') -> bool:
     
     msg = Message(
-        sender= sender,
+        sender= 'obednikovskiborjan@gmail.com',
         body=message,
         recipients=[reciever],
         subject='Test poraka'
