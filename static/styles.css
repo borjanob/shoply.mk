@@ -86,9 +86,10 @@
 }
 
 header {
-  background-image: url(pozadina-4.webp);
+  background-image: url(pozadina-3-brightness-down.png);
   background-repeat: no-repeat;
   background-size: cover;
+  backdrop-filter: blur(18px);
 }
 
 
@@ -97,6 +98,8 @@ header {
     scroll-behavior: smooth;
   }
 }
+
+.button1 {border-radius: 50%;}
 
 body {
   margin: 0;
