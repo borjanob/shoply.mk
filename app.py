@@ -2,19 +2,21 @@ from flask import Flask, render_template, request,redirect
 from datetime import datetime
 from flask_mail import Mail, Message
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 # TODO: ADD CHOOSE ME BUTTON TO PACKET CARDS
 # TODO: ADD POPLAKI/POFALBI
 # TODO: ADD USER TESTIMONIALS
 
+load_dotenv('.env')
+
 app = Flask(__name__)
 
 
-username = os.environ.get('MAIL_USERNAME')
-password = os.environ.get('MAIL_PASSWORD')
-sender = os.environ.get('MAIL_USERNAME')
-reciever = os.environ.get('MAIL_USERNAME')
+username = os.getenv('MAIL_USERNAME')
+password = os.getenv('MAIL_PASSWORD')
+sender = os.getenv('MAIL_USERNAME')
+reciever = os.getenv('MAIL_USERNAME')
 
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -27,15 +29,19 @@ app.config['MAIL_USE_SSL'] = False
 mail = Mail()
 mail.init_app(app)
 
+recievers = ['obednikovskiborjan@gmail.com'] #, 'obednikovskas@yahoo.com']
 
 def send_email(email: str,name:str = 'Unknown', phone: int = None, message: str = 'No message',
              subject: str = 'Web app idea') -> bool:
     
+
+    message = f'Email from {email}, phone: {phone}, \n {message}'
+
     msg = Message(
-        sender= 'obednikovskiborjan@gmail.com',
+        sender= sender,
         body=message,
-        recipients=[reciever],
-        subject='Test poraka'
+        recipients=recievers,
+        subject=subject
     )
 
     try:
