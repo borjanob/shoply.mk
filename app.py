@@ -29,7 +29,7 @@ app.config['MAIL_USE_SSL'] = False
 mail = Mail()
 mail.init_app(app)
 
-recievers = ['obednikovskiborjan@gmail.com'] #, 'obednikovskas@yahoo.com']
+recievers = ['obednikovskiborjan@gmail.com', 'obednikovskas@yahoo.com']
 
 def send_email(email: str,name:str = 'Unknown', phone: int = None, message: str = 'No message',
              subject: str = 'Web app idea') -> bool:
