@@ -2,13 +2,13 @@ from flask import Flask, render_template, request,redirect
 from datetime import datetime
 from flask_mail import Mail, Message
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv,find_dotenv
 
 # TODO: ADD CHOOSE ME BUTTON TO PACKET CARDS
 # TODO: ADD POPLAKI/POFALBI
 # TODO: ADD USER TESTIMONIALS
 
-load_dotenv('.env')
+load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
@@ -71,4 +71,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

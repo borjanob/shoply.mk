@@ -1,3 +1,3 @@
 flask
-flask-dotenv
+python-dotenv
 flask-mail
